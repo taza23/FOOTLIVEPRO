@@ -64,7 +64,6 @@
             background: linear-gradient(to right, #ffffff, var(--accent-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        
         .access-card {
             background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.8));
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -101,8 +100,28 @@
             z-index: 2;
         }
 
+      
+        .copy-btn {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 6px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin: 10px auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 5;
+        }
+        .copy-btn:hover { background: var(--accent-gold); color: #000; }
+        .copy-btn:active { transform: scale(0.95); }
+
         .live-indicator {
-            display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 0.8rem; color: #aaa; margin-top: 5px;
+            display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 0.8rem; color: #aaa; margin-top: 10px;
         }
         .blink-dot { width: 8px; height: 8px; background-color: #00ff41; border-radius: 50%; box-shadow: 0 0 10px #00ff41; animation: blink 1.5s infinite; }
 
@@ -205,7 +224,13 @@
 
             <div class="access-card">
                 <span class="access-label">كود تفعيل اليوم</span>
-                <div class="access-code-display">2026</div>
+                <div class="access-code-display" id="activation-code">2026</div>
+                
+                <button class="copy-btn" onclick="copyCode()">
+                    <i class="far fa-copy"></i>
+                    <span id="copy-text">نسخ الكود</span>
+                </button>
+
                 <div class="live-indicator">
                     <span class="blink-dot"></span>
                     <span>نشط الآن - صالح لمدة 24 ساعة</span>
@@ -279,6 +304,30 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+  
+        function copyCode() {
+            const code = document.getElementById('activation-code').innerText;
+            const copyBtn = document.querySelector('.copy-btn');
+            const copyText = document.getElementById('copy-text');
+            
+            navigator.clipboard.writeText(code).then(() => {
+   
+                copyText.innerText = "تم النسخ!";
+                copyBtn.style.background = "#00ff41";
+                copyBtn.style.color = "#000";
+                copyBtn.style.borderColor = "#00ff41";
+                
+                setTimeout(() => {
+                    copyText.innerText = "نسخ الكود";
+                    copyBtn.style.background = "rgba(212, 175, 55, 0.1)";
+                    copyBtn.style.color = "var(--accent-gold)";
+                    copyBtn.style.borderColor = "var(--accent-gold)";
+                }, 2000);
+            }).catch(err => {
+                console.error('فشل النسخ: ', err);
+            });
+        }
+
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
