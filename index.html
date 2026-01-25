@@ -3,317 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOOT LIVE PRO  </title>
+    <title>FOOT LIVE PRO | القمة الكروية</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        
         :root {
-            --bg-main: #050505; 
-            --accent-gold: #d4af37; 
-            --accent-fire: #ff4500; 
+            --bg-main: #050505;
+            --accent-gold: #d4af37;
+            --accent-fire: #ff4500;
             --text-light: #ffffff;
             --text-muted: #a0a0a0;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-glow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; line-height: 1.6; }
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-light);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-   
         .premium-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 90% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 10% 90%, rgba(255, 69, 0, 0.08) 0%, transparent 40%),
-                linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 90% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 10% 90%, rgba(255, 69, 0, 0.08) 0%, transparent 40%),
+                        linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
             z-index: -2;
         }
 
-        
-        #particles-js {
-            position: fixed;
-            width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.3;
-        }
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
 
-        
         header {
-            padding: 25px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 100;
+            padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 100;
         }
 
         .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px;
             background: linear-gradient(to right, var(--accent-gold), var(--accent-fire));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .logo span { color: white; font-weight: 400; }
 
-        
+        .social-link {
+            color: #fff; font-size: 1.5rem; transition: 0.3s;
+        }
+        .social-link:hover { color: #E1306C; transform: scale(1.1); text-shadow: 0 0 15px #E1306C; }
+
         .hero {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
-            gap: 50px;
+            min-height: 85vh; display: flex; align-items: center; justify-content: space-between; padding: 0 8%; gap: 50px;
         }
 
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease forwards 0.5s;
-        }
+        .hero-content { flex: 1; max-width: 600px; opacity: 0; transform: translateY(30px); animation: fadeUp 1s ease forwards 0.5s; }
 
         .premium-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
-            border-radius: 30px;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
+            display: inline-block; padding: 8px 16px; background: rgba(212, 175, 55, 0.1); color: var(--accent-gold);
+            border: 1px solid var(--accent-gold); border-radius: 30px; font-size: 0.9rem; margin-bottom: 25px; letter-spacing: 1px;
         }
 
-        h1 {
-            font-size: 3.8rem;
-            line-height: 1.2;
-            margin-bottom: 25px;
-            font-weight: 800;
-        }
-
+        h1 { font-size: 3.8rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
         h1 .gradient-text {
-            background: linear-gradient(to right, #ffffff, var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-text {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            border-left: 3px solid var(--accent-fire);
-            padding-left: 20px;
+            background: linear-gradient(to right, #ffffff, var(--accent-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn-premium {
-            padding: 18px 40px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.4s ease;
+        .access-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.8));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 35px;
             position: relative;
             overflow: hidden;
-            border: none;
-            cursor: pointer;
-        }
-
-        
-        .btn-download {
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-fire));
-            color: white;
-            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.3);
-        }
-        .btn-download:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 69, 0, 0.5);
-        }
-        
-        
-        .btn-whatsapp {
-            background: rgba(255,255,255,0.05);
-            color: white;
-            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             backdrop-filter: blur(10px);
-        }
-        .btn-whatsapp:hover {
-            border-color: #25D366;
-            color: #25D366;
-            background: rgba(37, 211, 102, 0.1);
-        }
-
-        
-        .hero-visual {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            perspective: 1000px;
-            opacity: 0;
-            transform: translateX(50px);
-            animation: fadeLeft 1s ease forwards 0.8s;
-        }
-
-        .phone-mockup {
-            width: 300px;
-            height: 600px;
-            background: #000;
-            border-radius: 40px;
-            border: 4px solid #333;
-            box-shadow: 
-                0 0 0 8px #0a0a0a,
-                0 20px 50px rgba(0,0,0,0.5),
-                0 0 100px rgba(212, 175, 55, 0.1);
-            overflow: hidden;
-            position: relative;
-            transform: rotateY(-15deg) rotateX(5deg);
-            transition: 0.5s;
-        }
-        
-        .phone-mockup:hover {
-             transform: rotateY(0deg) rotateX(0deg);
-        }
-
-        .phone-screen {
-            width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1626020213355-582196081554?q=80&w=1000&auto=format&fit=crop') center/cover;
-            position: relative;
-        }
-        
-        .phone-screen::after {
-            content: 'مباشر الآن: الكلاسيكو';
-            position: absolute;
-            bottom: 30px; left: 20px;
-            background: var(--accent-fire);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        
-        .features-section {
-            padding: 100px 8%;
-            position: relative;
-        }
-        .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
+            max-width: 400px;
         }
+        
+        .access-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .access-label {
+            font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 10px; display: block;
+        }
+
+        .access-code-display {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            margin: 5px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .live-indicator {
+            display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 0.8rem; color: #aaa; margin-top: 5px;
+        }
+        .blink-dot { width: 8px; height: 8px; background-color: #00ff41; border-radius: 50%; box-shadow: 0 0 10px #00ff41; animation: blink 1.5s infinite; }
+
+        @keyframes shine { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        
+
+        .hero-text { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; border-left: 3px solid var(--accent-fire); padding-left: 20px; }
+
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .btn-premium {
+            padding: 18px 40px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; text-decoration: none;
+            display: flex; align-items: center; gap: 10px; transition: all 0.4s ease; position: relative; overflow: hidden; border: none; cursor: pointer;
+        }
+
+        .btn-download { background: linear-gradient(135deg, var(--accent-gold), var(--accent-fire)); color: white; box-shadow: 0 10px 30px rgba(255, 69, 0, 0.3); }
+        .btn-download:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255, 69, 0, 0.5); }
+        
+        .btn-whatsapp { background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
+        .btn-whatsapp:hover { border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.1); }
+
+        .hero-visual { flex: 1; display: flex; justify-content: center; perspective: 1000px; opacity: 0; transform: translateX(50px); animation: fadeLeft 1s ease forwards 0.8s; }
+        .phone-mockup {
+            width: 300px; height: 600px; background: #000; border-radius: 40px; border: 4px solid #333;
+            box-shadow: 0 0 0 8px #0a0a0a, 0 20px 50px rgba(0,0,0,0.5), 0 0 100px rgba(212, 175, 55, 0.1);
+            overflow: hidden; position: relative; transform: rotateY(-15deg) rotateX(5deg); transition: 0.5s;
+        }
+        .phone-mockup:hover { transform: rotateY(0deg) rotateX(0deg); }
+        .phone-screen { width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1626020213355-582196081554?q=80&w=1000&auto=format&fit=crop') center/cover; position: relative; }
+        .phone-screen::after {
+            content: 'مباشر الآن: الكلاسيكو'; position: absolute; bottom: 30px; left: 20px; background: var(--accent-fire);
+            padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;
+        }
+
+        .features-section { padding: 100px 8%; position: relative; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
         .section-title span { color: var(--accent-gold); }
 
-        .glass-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
+        .glass-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: 25px;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); padding: 40px;
+            border-radius: 25px; transition: 0.4s; position: relative; overflow: hidden;
         }
-        .glass-card:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent);
-            opacity: 0; transition: 0.4s;
-        }
-        .glass-card:hover::before { opacity: 1; }
+        .glass-card:hover { border-color: var(--accent-gold); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .card-icon { font-size: 3rem; margin-bottom: 25px; background: linear-gradient(to bottom, var(--accent-gold), var(--accent-fire)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 25px;
-            background: linear-gradient(to bottom, var(--accent-gold), var(--accent-fire));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .glass-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .glass-card p { color: var(--text-muted); }
-
-        
-        .developer-signature {
-            text-align: center;
-            padding: 80px 0;
-            background: linear-gradient(to top, #000, rgba(10,10,10,0));
-            margin-top: 50px;
-        }
+        .developer-signature { text-align: center; padding: 80px 0; background: linear-gradient(to top, #000, rgba(10,10,10,0)); margin-top: 50px; }
         .dev-seal {
-            width: 80px; height: 80px;
-            margin: 0 auto 20px;
-            border: 2px solid var(--accent-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--accent-gold);
+            width: 80px; height: 80px; margin: 0 auto 20px; border: 2px solid var(--accent-gold); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--accent-gold);
         }
         .dev-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            background: linear-gradient(to right, #fff, #999);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, #bbb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase;
         }
-        .dev-title { color: var(--accent-fire); letter-spacing: 2px; font-weight: bold; }
+        .dev-names-container { display: flex; flex-direction: column; gap: 5px; }
+        .dev-title { color: var(--accent-fire); letter-spacing: 2px; font-weight: bold; margin-bottom: 10px;}
+        
+        .insta-footer-link {
+            display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; color: #fff; text-decoration: none; padding: 10px 20px;
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; transition: 0.3s;
+        }
+        .insta-footer-link:hover { background: rgba(225, 48, 108, 0.1); border-color: #E1306C; color: #E1306C; }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid var(--glass-border);
-            font-size: 0.9rem;
-            color: #666;
-        }
+        footer { text-align: center; padding: 30px; border-top: 1px solid var(--glass-border); font-size: 0.9rem; color: #666; }
 
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeLeft { to { opacity: 1; transform: translateX(0); } }
 
-        
         @media (max-width: 992px) {
             .hero { flex-direction: column; text-align: center; padding-top: 50px; }
             .hero-content { margin-bottom: 50px; }
@@ -321,6 +179,7 @@
             .btn-group { justify-content: center; }
             h1 { font-size: 3rem; }
             .phone-mockup { height: 500px; width: 250px; transform: rotateY(0) rotateX(0); }
+            .access-card { margin: 0 auto 35px auto; }
         }
     </style>
 </head>
@@ -331,6 +190,9 @@
 
     <header>
         <div class="logo">FOOT <span>LIVE PRO</span></div>
+        <a href="https://www.instagram.com/ghaddarchafik77?igsh=MWN5Njg3eWpqM3RudQ==" target="_blank" class="social-link">
+            <i class="fab fa-instagram"></i>
+        </a>
     </header>
 
     <section class="hero">
@@ -340,18 +202,28 @@
                 عالم كرة القدم <br>
                 <span class="gradient-text">بين يديك، بفخامة.</span>
             </h1>
+
+            <div class="access-card">
+                <span class="access-label">كود تفعيل اليوم</span>
+                <div class="access-code-display">2026</div>
+                <div class="live-indicator">
+                    <span class="blink-dot"></span>
+                    <span>نشط الآن - صالح لمدة 24 ساعة</span>
+                </div>
+            </div>
+
             <p class="hero-text">
-                تجربة مشاهدة لا مثيل لها. سيرفرات خارقة، جودة 4K حقيقية، ودعم كامل وحصري لأصحاب "نجمة 6". وداعاً للتقطيع، أهلاً بالمتعة المطلقة.
+                تجربة مشاهدة لا مثيل لها. سيرفرات خارقة، جودة 4K حقيقية، ودعم كامل وحصري لأصحاب "نجمة 6".
             </p>
             
             <div class="btn-group">
                 <a href="https://www.mediafire.com/file/4wuija92el4dyjn/FOOT_LIVE_PRO.apk/file" class="btn-premium btn-download" target="_blank">
                     <i class="fab fa-android" style="font-size: 1.4rem;"></i>
-                    <span>تحميل التطبيق الآن</span>
+                    <span>تحميل التطبيق</span>
                 </a>
                 <a href="https://whatsapp.com/channel/0029VanCvkp9sBI7ih6Kmw3t" class="btn-premium btn-whatsapp" target="_blank">
                     <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i>
-                    <span>انضم للقناة الرسمية</span>
+                    <span>القناة الرسمية</span>
                 </a>
             </div>
         </div>
@@ -365,7 +237,7 @@
     </section>
 
     <section class="features-section">
-        <h2 class="section-title">لماذا <span>FOOT LIVE PRO</span> هو الأفضل؟</h2>
+        <h2 class="section-title">لماذا <span>FOOT LIVE PRO</span>؟</h2>
         <div class="glass-grid">
             <div class="glass-card">
                 <i class="fas fa-star card-icon"></i>
@@ -375,7 +247,7 @@
             <div class="glass-card">
                 <i class="fas fa-rocket card-icon"></i>
                 <h3>سرعة خيالية</h3>
-                <p>بنية تحتية متطورة وسيرفرات CHAFIK GHADDAR / OMAR OUHRI الخاصة تضمن لك بثاً مباشراً بدون ثانية تأخير واحدة.</p>
+                <p>بنية تحتية متطورة وسيرفرات خاصة تضمن لك بثاً مباشراً بدون ثانية تأخير واحدة.</p>
             </div>
             <div class="glass-card">
                 <i class="fas fa-shield-alt card-icon"></i>
@@ -390,16 +262,23 @@
             <i class="fas fa-code"></i>
         </div>
         <p class="dev-title">DEVELOPED & CERTIFIED BY</p>
-        <h2 class="dev-name">CHAFIK GHADDAR</h2>
+        <div class="dev-names-container">
+            <h2 class="dev-name">CHAFIK GHADDAR</h2>
+            <h2 class="dev-name" style="font-size: 1.4rem; color: #888;">&</h2>
+            <h2 class="dev-name">OMAR OUHRI</h2>
+        </div>
+        
+        <a href="https://www.instagram.com/ghaddarchafik77?igsh=MWN5Njg3eWpqM3RudQ==" target="_blank" class="insta-footer-link">
+            <i class="fab fa-instagram"></i> تواصل معنا على إنستغرام
+        </a>
     </div>
 
     <footer>
-        جميع الحقوق محفوظة &copy; 2026 FOOT LIVE PRO. الفخامة في المشاهدة.
+        جميع الحقوق محفوظة &copy; 2026 FOOT LIVE PRO.
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
@@ -407,18 +286,11 @@
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.3, "random": true },
                 "size": { "value": 3, "random": true },
-                "line_linked": { "enable": false },
-                "move": { "enable": true, "speed": 1, "direction": "top", "random": true, "straight": false, "out_mode": "out" }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "push" } },
-                "modes": { "bubble": { "distance": 200, "size": 6, "duration": 2, "opacity": 0.8, "speed": 3 } }
+                "move": { "enable": true, "speed": 1, "direction": "top", "random": true, "out_mode": "out" }
             },
             "retina_detect": true
         });
 
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -437,3 +309,4 @@
     </script>
 </body>
 </html>
+
